@@ -16,8 +16,8 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 # Configuration
-REPO_URL="https://github.com/manghidev/lazy-docker"
-REPO_NAME="lazy-docker"
+REPO_URL="https://github.com/AmoxcalliDev/Lazy-Docker"
+REPO_NAME="Lazy-Docker"
 INSTALL_DIR="$HOME/.local/share/lazy-docker"
 BIN_DIR="$HOME/.local/bin"
 TEMP_DIR="/tmp/lazy-docker-install"

@@ -21,13 +21,13 @@ lazy configure  # Customize your setup (optional)
 ### 📦 Traditional Installation
 If you prefer to clone the repository manually:
 ```bash
-git clone https://github.com/manghidev/lazy-docker.git && cd lazy-docker && make quick
+git clone https://github.com/AmoxcalliDev/Lazy-Docker.git && cd Lazy-Docker && make quick
 ```
 
 ### 🔧 Manual Installation
 ```bash
-git clone https://github.com/manghidev/lazy-docker.git
-cd lazy-docker
+git clone https://github.com/AmoxcalliDev/Lazy-Docker.git
+cd Lazy-Docker
 make build    # Build the environment
 make enter    # Enter the container
 ```
@@ -250,7 +250,7 @@ curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash
 **From Remote to Traditional:**
 ```bash
 lazy uninstall
-git clone https://github.com/manghidev/lazy-docker.git && cd lazy-docker && make quick
+git clone https://github.com/AmoxcalliDev/Lazy-Docker.git && cd Lazy-Docker && make quick
 ```
 
 ---
@@ -276,10 +276,10 @@ lazy update      # Update weekly/monthly
 ### Traditional Installation Workflow
 ```bash
 # 1. Install once
-git clone https://github.com/manghidev/lazy-docker.git && cd lazy-docker && make quick
+git clone https://github.com/AmoxcalliDev/Lazy-Docker.git && cd Lazy-Docker && make quick
 
 # 2. Daily usage (must be in project directory)
-cd path/to/lazy-docker
+cd path/to/Lazy-Docker
 make enter          # Start coding
 
 # 3. Management
@@ -400,17 +400,16 @@ lazy uninstall && curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash
 - **[🔁 Container Lifecycle Guide](docs/CONTAINER_LIFECYCLE.md)** - Detailed workflows
 
 **Support:**
-- 🐛 [Report Issues](https://github.com/manghidev/lazy-docker/issues)
-- 💡 [Feature Requests](https://github.com/manghidev/lazy-docker/issues)
-- ⭐ [Star the Project](https://github.com/manghidev/lazy-docker)
+- 🐛 [Report Issues](https://github.com/AmoxcalliDev/Lazy-Docker/issues)
+- 💡 [Feature Requests](https://github.com/AmoxcalliDev/Lazy-Docker/issues)
+- ⭐ [Star the Project](https://github.com/AmoxcalliDev/Lazy-Docker)
 
 ---
 
 ## 👨‍💻 About
 
-**Created by ManghiDev**  
-🌐 [Personal Website](https://manghi.dev)  
-📧 [GitHub Issues](https://github.com/manghidev/lazy-docker/issues)
+**Contact & Support:**
+📧 [GitHub Issues](https://github.com/AmoxcalliDev/Lazy-Docker/issues)
 
 **License:** GPLv3 - See [LICENSE](LICENSE) file
 
