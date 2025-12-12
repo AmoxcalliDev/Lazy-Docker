@@ -9,7 +9,7 @@
 .dotfiles/.zsh_history
 
 # LazyVim Docker configuration
-.lazyvim-docker-config
+.lazy-docker-config
 
 # Backup files
 backups/

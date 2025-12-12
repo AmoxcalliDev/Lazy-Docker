@@ -25,7 +25,7 @@ else
 fi
 
 # Configuration
-INSTALL_DIR="$HOME/.local/share/lazyvim-docker"
+INSTALL_DIR="$HOME/.local/share/lazy-docker"
 BIN_DIR="$HOME/.local/bin"
 
 # Print functions
@@ -121,11 +121,11 @@ cleanup_docker() {
             docker rm lazyvim 2>/dev/null || true
             
             # Remove images
-            docker rmi lazyvim-docker_code-editor 2>/dev/null || true
+            docker rmi lazy-docker_code-editor 2>/dev/null || true
             docker rmi $(docker images | grep lazyvim | awk '{print $3}') 2>/dev/null || true
             
             # Remove volumes
-            docker volume rm lazyvim-docker_lazyvim-data 2>/dev/null || true
+            docker volume rm lazy-docker_lazyvim-data 2>/dev/null || true
             docker volume rm $(docker volume ls | grep lazyvim | awk '{print $2}') 2>/dev/null || true
             
             print_success "Docker cleanup completed"
@@ -299,7 +299,7 @@ main() {
     print_info "Thank you for using LazyVim Docker! 🚀"
     printf "\n"
     print_info "To reinstall later, run:"
-    printf "  ${GREEN}curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scripts/start.sh | bash${NC}\n"
+    printf "  ${GREEN}curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash${NC}\n"
     printf "\n"
     
     # Restart terminal to clean up environment

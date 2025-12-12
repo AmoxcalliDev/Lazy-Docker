@@ -127,7 +127,7 @@ remove_project_directory() {
                 make destroy 2>/dev/null || {
                     print_warning "Could not run 'make destroy'. Attempting manual cleanup..."
                     docker compose down -v 2>/dev/null || true
-                    docker rmi lazyvim-docker_code-editor 2>/dev/null || true
+                    docker rmi lazy-docker_code-editor 2>/dev/null || true
                 }
             fi
             

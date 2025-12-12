@@ -131,8 +131,8 @@ GIT_USER_EMAIL="your.email@example.com"
 
 ### First Time Setup
 ```bash
-git clone https://github.com/manghidev/lazyvim-docker.git
-cd lazyvim-docker
+git clone https://github.com/AmoxcalliDev/Lazy-Docker.git
+cd Lazy-Docker
 ./scripts/setup.sh    # Interactive configuration
 make build            # Build environment
 ```

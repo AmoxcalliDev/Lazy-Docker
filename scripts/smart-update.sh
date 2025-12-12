@@ -16,7 +16,7 @@ BOLD='\033[1m'
 NC='\033[0m' # No Color
 
 # Configuration
-REPO_URL="https://github.com/manghidev/lazyvim-docker"
+REPO_URL="https://github.com/AmoxcalliDev/Lazy-Docker"
 CURRENT_DIR="$(pwd)"
 BACKUP_DIR="./backups"
 
@@ -101,7 +101,7 @@ get_current_version() {
 # Get latest version from GitHub
 get_latest_version() {
     if command -v curl >/dev/null 2>&1; then
-        local latest=$(curl -s "https://api.github.com/repos/manghidev/lazyvim-docker/releases/latest" 2>/dev/null | \
+        local latest=$(curl -s "https://api.github.com/repos/AmoxcalliDev/Lazy-Docker/releases/latest" 2>/dev/null | \
         grep '"tag_name":' | \
         sed -E 's/.*"([^"]+)".*/\1/' 2>/dev/null || echo "")
         
@@ -165,7 +165,7 @@ version_is_newer() {
 
 # Create backup
 create_backup() {
-    local backup_name="lazyvim-docker-backup-$(date +%Y%m%d-%H%M%S)"
+    local backup_name="lazy-docker-backup-$(date +%Y%m%d-%H%M%S)"
     local backup_path="$BACKUP_DIR/$backup_name"
     
     print_step "Creating backup of current configuration..."

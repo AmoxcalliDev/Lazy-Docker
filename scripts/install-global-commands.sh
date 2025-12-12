@@ -29,7 +29,7 @@ log_error() {
     printf "${RED}[ERROR]${NC} %s\n" "$1"
 }
 
-# Get the absolute path of the lazyvim-docker directory
+# Get the absolute path of the lazy-docker directory
 LAZYVIM_DOCKER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Remove the /scripts part from the path
 LAZYVIM_DOCKER_PATH="$(dirname "$LAZYVIM_DOCKER_PATH")"
