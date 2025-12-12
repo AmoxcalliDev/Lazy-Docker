@@ -325,6 +325,13 @@ main() {
     print_info "To reinstall later, run:"
     printf "  ${GREEN}curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash${NC}\n"
     printf "\n"
+    
+    # Auto-reload shell to complete cleanup
+    print_info "🔄 Reloading shell automatically in 2 seconds..."
+    sleep 2
+    
+    # Execute shell restart
+    exec $SHELL
 }
 
 # Run main function
