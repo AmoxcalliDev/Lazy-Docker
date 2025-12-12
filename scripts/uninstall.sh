@@ -56,47 +56,6 @@ print_step() {
     printf "${PURPLE}[STEP]${NC} %s\n" "$1"
 }
 
-# Smart terminal restart for clean environment
-restart_terminal() {
-    print_step "Setting up terminal cleanup..."
-    
-    # Detect current shell
-    local current_shell=""
-    if [ -n "$SHELL" ]; then
-        case "$SHELL" in
-            */zsh) current_shell="zsh" ;;
-            */bash) current_shell="bash" ;;
-            *) current_shell="bash" ;;
-        esac
-    else
-        current_shell="bash"
-    fi
-    
-    print_info "Detected shell: $current_shell"
-    
-    # Create a helper script for easy restart
-    local helper_script="/tmp/lazyvim_cleanup_terminal.sh"
-    cat > "$helper_script" << 'EOF'
-#!/bin/bash
-printf "🧹 Restarting terminal to complete Lazy Docker cleanup...\n"
-printf "\n"
-EOF
-    printf "exec %s\n" "$current_shell" >> "$helper_script"
-    chmod +x "$helper_script"
-    
-    printf "\n"
-    print_warning "🧹 To complete cleanup and remove any traces:"
-    printf "\n"
-    printf "  ${GREEN}Option 1 (Easiest):${NC}\n"
-    printf "    ${GREEN}%s${NC}\n" "$helper_script"
-    printf "\n"
-    printf "  ${GREEN}Option 2 (Manual):${NC}\n"
-    printf "    ${GREEN}exec %s${NC}\n" "$current_shell"
-    printf "\n"
-    print_info "💡 Copy and paste the first command to clean your terminal"
-    print_info "This ensures no traces of 'lazy' commands remain"
-}
-
 # Stop and remove Docker containers
 cleanup_docker() {
     print_step "Cleaning up Docker containers and images..."
@@ -151,17 +110,22 @@ remove_installation() {
 remove_shell_commands() {
     print_step "Removing global commands from shell configurations..."
     
-    local configs=("$HOME/.bashrc" "$HOME/.zshrc" "$HOME/.bash_profile")
+    local configs=("$HOME/.bashrc" "$HOME/.zshrc" "$HOME/.bash_profile" "$HOME/.profile")
     local marker_start="# Lazy Docker Global Commands - START"
     local marker_end="# Lazy Docker Global Commands - END"
     local removed_any=false
     
     for config in "${configs[@]}"; do
-        if [[ -f "$config" ]] && grep -q "$marker_start" "$config" 2>/dev/null; then
-            print_info "Removing commands from: $config"
-            
-            # Create backup
-            cp "$config" "${config}.backup.$(date +%Y%m%d-%H%M%S)"
+        if [[ ! -f "$config" ]]; then
+            continue
+        fi
+        
+        # Create backup first
+        cp "$config" "${config}.backup.$(date +%Y%m%d-%H%M%S)" 2>/dev/null || true
+        
+        # Check and remove section between markers
+        if grep -q "$marker_start" "$config" 2>/dev/null; then
+            print_info "Removing lazy commands block from: $config"
             
             # Remove the section between markers
             if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -170,6 +134,19 @@ remove_shell_commands() {
                 sed -i "/$marker_start/,/$marker_end/d" "$config"
             fi
             
+            removed_any=true
+        fi
+        
+        # Also remove any stray lines that might reference lazy function
+        if grep -q "function lazy()" "$config" 2>/dev/null || grep -q "lazy()" "$config" 2>/dev/null; then
+            print_info "Removing stray lazy function definitions from: $config"
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+                sed -i '' '/function lazy()/d' "$config"
+                sed -i '' '/^lazy()/d' "$config"
+            else
+                sed -i '/function lazy()/d' "$config"
+                sed -i '/^lazy()/d' "$config"
+            fi
             removed_any=true
         fi
     done
@@ -185,11 +162,24 @@ remove_shell_commands() {
 remove_global_command() {
     print_step "Removing global command..."
     
+    # Remove binary/script file
     if [ -f "$BIN_DIR/lazy" ]; then
         rm -f "$BIN_DIR/lazy"
-        print_success "Global 'lazy' command removed"
+        print_success "Global 'lazy' command file removed from $BIN_DIR"
     else
-        print_warning "Global command not found: $BIN_DIR/lazy"
+        print_warning "Global command file not found: $BIN_DIR/lazy"
+    fi
+    
+    # Try to unset the function in the current shell
+    if declare -f lazy >/dev/null 2>&1; then
+        unset -f lazy 2>/dev/null || true
+        print_success "Unset 'lazy' function from current shell"
+    fi
+    
+    # Also check if lazy is an alias
+    if alias lazy >/dev/null 2>&1; then
+        unalias lazy 2>/dev/null || true
+        print_success "Removed 'lazy' alias from current shell"
     fi
 }
 
@@ -273,6 +263,20 @@ confirm_uninstall() {
     esac
 }
 
+# Cleanup temporary files and caches
+cleanup_temp_files() {
+    print_step "Cleaning up temporary files..."
+    
+    # Remove any temporary files created by lazy-docker
+    rm -rf /tmp/lazy-docker-* 2>/dev/null || true
+    rm -rf /tmp/lazyvim-* 2>/dev/null || true
+    
+    # Remove any config files left in home directory
+    rm -f "$HOME/.lazy-docker-config" 2>/dev/null || true
+    
+    print_success "Temporary files cleaned"
+}
+
 # Main uninstallation process
 main() {
     print_header
@@ -287,23 +291,37 @@ main() {
     remove_global_command
     remove_shell_commands
     remove_path_modifications
+    cleanup_temp_files
     
     printf "\n"
     print_success "🗑️  Lazy Docker has been completely uninstalled!"
     printf "\n"
     print_info "What was removed:"
     print_info "  ✓ Docker containers and images"
-    print_info "  ✓ Installation directory"
-    print_info "  ✓ Global commands"
+    print_info "  ✓ Installation directory ($INSTALL_DIR)"
+    print_info "  ✓ Global 'lazy' command ($BIN_DIR/lazy)"
+    print_info "  ✓ Shell configuration entries"
+    print_info "  ✓ PATH modifications"
     printf "\n"
+    
+    # Important warning about shell reload
+    print_warning "⚠️  IMPORTANT: Reload your shell to remove 'lazy' from memory"
+    printf "\n"
+    printf "  ${GREEN}Option 1 - Restart shell session:${NC}\n"
+    printf "    ${GREEN}exec \$SHELL${NC}\n"
+    printf "\n"
+    printf "  ${GREEN}Option 2 - Start new terminal:${NC}\n"
+    printf "    Close this terminal and open a new one\n"
+    printf "\n"
+    printf "  ${GREEN}Option 3 - Source config again:${NC}\n"
+    printf "    ${GREEN}source ~/.zshrc${NC}  or  ${GREEN}source ~/.bashrc${NC}\n"
+    printf "\n"
+    
     print_info "Thank you for using Lazy Docker! 🚀"
     printf "\n"
     print_info "To reinstall later, run:"
     printf "  ${GREEN}curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash${NC}\n"
     printf "\n"
-    
-    # Restart terminal to clean up environment
-    restart_terminal
 }
 
 # Run main function
