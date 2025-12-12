@@ -1,4 +1,4 @@
-# LazyVim Docker Environment
+# Lazy Docker Environment
 
 A professional Dockerized environment for LazyVim (advanced Neovim configuration) with essential developer tools. Perfect for development without installing anything on your host machine!
 
@@ -33,7 +33,7 @@ make enter    # Enter the container
 ```
 
 ### 🗑️ Uninstallation
-Complete removal when you no longer need LazyVim Docker:
+Complete removal when you no longer need Lazy Docker:
 
 ```bash
 # Interactive uninstall (asks for confirmation)
@@ -93,7 +93,7 @@ make destroy      # ⚠️  DANGEROUS: Removes everything
 
 ## 🌐 Remote Installation Scripts
 
-LazyVim Docker provides three main remote scripts for easy management:
+Lazy Docker provides three main remote scripts for easy management:
 
 ### 📥 Installation Script
 **`start.sh`** - Automatic setup with smart defaults
@@ -105,7 +105,7 @@ curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash
 
 **What it does:**
 - ✅ Checks system requirements (Docker, git, curl)
-- ✅ Downloads LazyVim Docker to `~/.local/share/lazy-docker`
+- ✅ Downloads Lazy Docker to `~/.local/share/lazy-docker`
 - ✅ Creates global `lazy` command in `~/.local/bin`
 - ✅ Adds `~/.local/bin` to your PATH automatically
 - ✅ Builds Docker environment (may take a few minutes)
@@ -162,7 +162,7 @@ curl -fsSL https://lazy-docker.amoxcalli.dev/uninstall | bash
 ## 🔬 Script Details & Technical Info
 
 ### 📥 start.sh
-**Purpose**: Complete LazyVim Docker setup with automatic configuration
+**Purpose**: Complete Lazy Docker setup with automatic configuration
 
 **Requirements Check:**
 - Docker (with compose support)
@@ -207,7 +207,7 @@ curl -fsSL https://lazy-docker.amoxcalli.dev/uninstall | bash
 - Backup created before update in `~/.local/share/lazy-docker-backup-[timestamp]`
 
 ### 🗑️ Smart Uninstaller
-**Purpose**: Complete and safe removal of LazyVim Docker installation
+**Purpose**: Complete and safe removal of Lazy Docker installation
 
 **Removal Process:**
 1. Shows exactly what will be removed

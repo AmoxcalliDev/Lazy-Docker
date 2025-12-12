@@ -1,6 +1,6 @@
-# LazyVim Docker - Command Reference
+# Lazy Docker - Command Reference
 
-This document provides a comprehensive guide to all available commands in the LazyVim Docker environment.
+This document provides a comprehensive guide to all available commands in the Lazy Docker environment.
 
 > **💡 Recommendation**: Always use `make` commands instead of running scripts directly. They provide better error handling, validation, and user feedback.
 

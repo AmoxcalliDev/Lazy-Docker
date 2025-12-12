@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# LazyVim Docker Build Script
-# This script builds and starts the LazyVim Docker environment
+# Lazy Docker Build Script
+# This script builds and starts the Lazy Docker environment
 # 
 # RECOMMENDATION: Use 'make build' instead of running this script directly
 # The make command provides better error handling and user feedback
@@ -53,7 +53,7 @@ TIMEZONE=$(grep -A 10 "args:" docker-compose.yml | grep "TIMEZONE:" | awk '{prin
 # Detect and configure user permissions
 detect_user_permissions
 
-log_info "Building LazyVim Docker environment v$VERSION"
+log_info "Building Lazy Docker environment v$VERSION"
 log_info "Timezone: $TIMEZONE"
 log_info "User permissions: UID=$USER_UID, GID=$USER_GID"
 

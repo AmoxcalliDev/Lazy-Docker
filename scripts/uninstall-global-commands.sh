@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # uninstall-global-commands.sh
-# Script to remove LazyVim Docker global commands from shell configuration files
+# Script to remove Lazy Docker global commands from shell configuration files
 
 set -e
 
@@ -14,8 +14,8 @@ NC='\033[0m' # No Color
 
 # Configuration
 FUNCTION_NAME="lazy"
-START_MARKER="# LazyVim Docker Global Commands - START"
-END_MARKER="# LazyVim Docker Global Commands - END"
+START_MARKER="# Lazy Docker Global Commands - START"
+END_MARKER="# Lazy Docker Global Commands - END"
 
 # Print colored output
 print_status() {
@@ -46,11 +46,11 @@ remove_from_config() {
     
     # Check if our commands are present
     if ! grep -q "$START_MARKER" "$config_file" 2>/dev/null; then
-        print_warning "LazyVim Docker commands not found in $config_file"
+        print_warning "Lazy Docker commands not found in $config_file"
         return 0
     fi
     
-    print_status "Removing LazyVim Docker commands from $config_file..."
+    print_status "Removing Lazy Docker commands from $config_file..."
     
     # Create a backup
     local timestamp="$(date +%Y%m%d-%H%M%S)"
@@ -60,7 +60,7 @@ remove_from_config() {
     # Remove the section between markers (including the markers)
     if sed -i.tmp "/$START_MARKER/,/$END_MARKER/d" "$config_file" 2>/dev/null; then
         rm -f "${config_file}.tmp"
-        print_success "Successfully removed LazyVim Docker commands from $shell_name config"
+        print_success "Successfully removed Lazy Docker commands from $shell_name config"
         return 0
     else
         print_error "Failed to remove commands from $config_file"
@@ -72,7 +72,7 @@ remove_from_config() {
 remove_global_commands() {
     local removed_any=false
     
-    print_status "Removing LazyVim Docker global commands from shell configurations..."
+    print_status "Removing Lazy Docker global commands from shell configurations..."
     
     # Remove from Zsh
     if remove_from_config "$HOME/.zshrc" "Zsh"; then
@@ -94,7 +94,7 @@ remove_global_commands() {
         print_status "Please restart your terminal or run 'source ~/.zshrc' (or ~/.bashrc) to apply changes"
         return 0
     else
-        print_warning "No LazyVim Docker commands were found in any shell configuration files"
+        print_warning "No Lazy Docker commands were found in any shell configuration files"
         return 1
     fi
 }
@@ -109,7 +109,7 @@ remove_project_directory() {
     printf "\n"
     print_status "Current project directory: $project_dir"
     printf "\n"
-    printf "Do you want to remove the entire LazyVim Docker project directory? [y/N]: "
+    printf "Do you want to remove the entire Lazy Docker project directory? [y/N]: "
     if [[ -t 0 ]] && [[ -t 1 ]] && [[ $- == *i* ]]; then
         read -r response </dev/tty
     else
@@ -151,7 +151,7 @@ remove_project_directory() {
 main() {
     printf "\n"
     printf "${BLUE}╔══════════════════════════════════════════════════════════════╗${NC}\n"
-    printf "${BLUE}║                LazyVim Docker - Uninstaller                  ║${NC}\n"
+    printf "${BLUE}║                Lazy Docker - Uninstaller                  ║${NC}\n"
     printf "${BLUE}╚══════════════════════════════════════════════════════════════╝${NC}\n"
     printf "\n"
     
@@ -172,11 +172,11 @@ main() {
     printf "\n"
     print_status "What was removed:"
     print_status "  • Global 'lazy' command and tab completion"
-    print_status "  • LazyVim Docker functions from shell configs"
+    print_status "  • Lazy Docker functions from shell configs"
     printf "\n"
     print_status "If you removed the project directory, all Docker containers and images were also cleaned up."
     printf "\n"
-    print_status "Thank you for using LazyVim Docker! 🚀"
+    print_status "Thank you for using Lazy Docker! 🚀"
     printf "\n"
 }
 

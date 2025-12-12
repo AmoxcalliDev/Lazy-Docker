@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Version bump script for LazyVim Docker
+# Version bump script for Lazy Docker
 # Usage: ./bump-version.sh [patch|minor|major]
 
 set -e

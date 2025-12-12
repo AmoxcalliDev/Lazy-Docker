@@ -1,5 +1,5 @@
-# LazyVim Docker - Makefile
-# Provides easy-to-use commands for managing the LazyVim Docker environment
+# Lazy Docker - Makefile
+# Provides easy-to-use commands for managing the Lazy Docker environment
 
 .PHONY: default build start enter stop destroy clean status update backup restore dev quick version bump-version restart
 .PHONY: install-global uninstall install-remote configure
@@ -8,7 +8,7 @@
 .DEFAULT_GOAL := default
 
 default: # Show all available commands (default when running 'make')
-	@echo "$(BLUE)LazyVim Docker Environment - Available Commands$(NC)"
+	@echo "$(BLUE)Lazy Docker Environment - Available Commands$(NC)"
 	@echo ""
 	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z_-]+:.*##/ { printf "$(GREEN)%-15s$(NC) %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
 	@echo ""
@@ -34,7 +34,7 @@ USER_GID := $(shell if [ "$(shell uname)" = "Linux" ]; then id -g; else echo "10
 DOCKER_COMPOSE := USER_UID=$(USER_UID) USER_GID=$(USER_GID) docker compose
 
 build: ## Build the Docker environment (clean build)
-	@echo "$(BLUE)Building LazyVim Docker environment v$(VERSION)...$(NC)"
+	@echo "$(BLUE)Building Lazy Docker environment v$(VERSION)...$(NC)"
 	@./scripts/build.sh
 
 start: ## Start the container (if already built)
@@ -95,7 +95,7 @@ clean: ## Clean up unused Docker resources
 	@echo "$(GREEN)Cleanup completed$(NC)"
 
 configure: ## Reconfigure directories and timezone
-	@echo "$(BLUE)Reconfiguring LazyVim Docker environment...$(NC)"
+	@echo "$(BLUE)Reconfiguring Lazy Docker environment...$(NC)"
 	@./scripts/configure.sh
 
 health: ## Run comprehensive health diagnostics
@@ -162,21 +162,21 @@ bump-version: ## Bump version (patch, minor, major)
 	@./scripts/bump-version.sh $(TYPE)
 
 install-global: ## Install global 'lazy' commands to use from anywhere
-	@echo "$(BLUE)Installing LazyVim Docker global commands...$(NC)"
+	@echo "$(BLUE)Installing Lazy Docker global commands...$(NC)"
 	@./scripts/install-global-commands.sh
 
 uninstall: ## Complete uninstall - removes everything (same as curl method)
-	@echo "$(BLUE)Running complete LazyVim Docker uninstall...$(NC)"
+	@echo "$(BLUE)Running complete Lazy Docker uninstall...$(NC)"
 	@./scripts/uninstall.sh
 
 install-remote:
-	@echo "$(BLUE)LazyVim Docker - Remote Installation$(NC)"
+	@echo "$(BLUE)Lazy Docker - Remote Installation$(NC)"
 	@echo ""
-	@echo "To install LazyVim Docker remotely (recommended):"
+	@echo "To install Lazy Docker remotely (recommended):"
 	@echo "$(GREEN)curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash$(NC)"
 	@echo ""
 	@echo "This will:"
-	@echo "  • Download and install LazyVim Docker to ~/.local/share/lazy-docker"
+	@echo "  • Download and install Lazy Docker to ~/.local/share/lazy-docker"
 	@echo "  • Create global 'lazy' command"
 	@echo "  • Build Docker environment with smart defaults"
 	@echo "  • No repository cloning required - everything is automated"

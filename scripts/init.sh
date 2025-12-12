@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# LazyVim Docker Init Script
-# This script starts and enters the LazyVim Docker container
+# Lazy Docker Init Script
+# This script starts and enters the Lazy Docker container
 #
 # RECOMMENDATION: Use 'make start' or 'make enter' instead of running this script directly
 # The make commands provide better error handling and user feedback

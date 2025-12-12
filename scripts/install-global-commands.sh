@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# LazyVim Docker Global Commands Installer
-# This script installs global commands to use LazyVim Docker from anywhere
+# Lazy Docker Global Commands Installer
+# This script installs global commands to use Lazy Docker from anywhere
 
 set -e
 
@@ -34,7 +34,7 @@ LAZYVIM_DOCKER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Remove the /scripts part from the path
 LAZYVIM_DOCKER_PATH="$(dirname "$LAZYVIM_DOCKER_PATH")"
 
-log_info "LazyVim Docker Global Commands Installer"
+log_info "Lazy Docker Global Commands Installer"
 printf "\n"
 log_info "This will install global 'lazy' commands that you can use from anywhere:"
 printf "  lazy start      -> make start\n"
@@ -49,15 +49,15 @@ printf "\n"
 
 # Check if we're in the correct directory
 if [[ ! -f "$LAZYVIM_DOCKER_PATH/Makefile" ]] || [[ ! -f "$LAZYVIM_DOCKER_PATH/docker-compose.yml" ]]; then
-    log_error "LazyVim Docker project not found at: $LAZYVIM_DOCKER_PATH"
+    log_error "Lazy Docker project not found at: $LAZYVIM_DOCKER_PATH"
     exit 1
 fi
 
 # Function to install for Zsh
 install_zsh() {
     local shell_config="$HOME/.zshrc"
-    local marker_start="# LazyVim Docker Global Commands - START"
-    local marker_end="# LazyVim Docker Global Commands - END"
+    local marker_start="# Lazy Docker Global Commands - START"
+    local marker_end="# Lazy Docker Global Commands - END"
     
     # Remove existing installation if present
     if grep -q "$marker_start" "$shell_config" 2>/dev/null; then
@@ -75,8 +75,8 @@ install_zsh() {
     cat >> "$shell_config" << EOF
 
 $marker_start
-# LazyVim Docker - Global Commands
-# Use 'lazy <command>' from anywhere to control LazyVim Docker
+# Lazy Docker - Global Commands
+# Use 'lazy <command>' from anywhere to control Lazy Docker
 lazyvim_docker_path="$LAZYVIM_DOCKER_PATH"
 
 # Colors for lazy command output
@@ -88,7 +88,7 @@ LAZY_NC='\033[0m' # No Color
 
 lazy() {
     if [[ \$# -eq 0 ]]; then
-        printf "\${LAZY_BLUE}LazyVim Docker - Available Commands\${LAZY_NC}\n"
+        printf "\${LAZY_BLUE}Lazy Docker - Available Commands\${LAZY_NC}\n"
         printf "\n"
         printf "Usage: lazy <command>\n"
         printf "\n"
@@ -160,8 +160,8 @@ EOF
 # Function to install for Bash
 install_bash() {
     local shell_config="$HOME/.bashrc"
-    local marker_start="# LazyVim Docker Global Commands - START"
-    local marker_end="# LazyVim Docker Global Commands - END"
+    local marker_start="# Lazy Docker Global Commands - START"
+    local marker_end="# Lazy Docker Global Commands - END"
     
     # Remove existing installation if present
     if grep -q "$marker_start" "$shell_config" 2>/dev/null; then
@@ -179,8 +179,8 @@ install_bash() {
     cat >> "$shell_config" << EOF
 
 $marker_start
-# LazyVim Docker - Global Commands
-# Use 'lazy <command>' from anywhere to control LazyVim Docker
+# Lazy Docker - Global Commands
+# Use 'lazy <command>' from anywhere to control Lazy Docker
 lazyvim_docker_path="$LAZYVIM_DOCKER_PATH"
 
 # Colors for lazy command output
@@ -192,7 +192,7 @@ LAZY_NC='\033[0m' # No Color
 
 lazy() {
     if [[ \$# -eq 0 ]]; then
-        printf "\${LAZY_BLUE}LazyVim Docker - Available Commands\${LAZY_NC}\n"
+        printf "\${LAZY_BLUE}Lazy Docker - Available Commands\${LAZY_NC}\n"
         printf "\n"
         printf "Usage: lazy <command>\n"
         printf "\n"

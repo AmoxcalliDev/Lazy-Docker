@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# LazyVim Docker - Remote Uninstall Script
-# This script completely removes LazyVim Docker from the system
+# Lazy Docker - Remote Uninstall Script
+# This script completely removes Lazy Docker from the system
 
 set -e
 
@@ -31,7 +31,7 @@ BIN_DIR="$HOME/.local/bin"
 # Print functions
 print_header() {
     printf "${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}\n"
-    printf "${CYAN}║             LazyVim Docker - Uninstaller                    ║${NC}\n"
+    printf "${CYAN}║             Lazy Docker - Uninstaller                    ║${NC}\n"
     printf "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}\n"
     printf "\n"
 }
@@ -78,7 +78,7 @@ restart_terminal() {
     local helper_script="/tmp/lazyvim_cleanup_terminal.sh"
     cat > "$helper_script" << 'EOF'
 #!/bin/bash
-printf "🧹 Restarting terminal to complete LazyVim Docker cleanup...\n"
+printf "🧹 Restarting terminal to complete Lazy Docker cleanup...\n"
 printf "\n"
 EOF
     printf "exec %s\n" "$current_shell" >> "$helper_script"
@@ -152,8 +152,8 @@ remove_shell_commands() {
     print_step "Removing global commands from shell configurations..."
     
     local configs=("$HOME/.bashrc" "$HOME/.zshrc" "$HOME/.bash_profile")
-    local marker_start="# LazyVim Docker Global Commands - START"
-    local marker_end="# LazyVim Docker Global Commands - END"
+    local marker_start="# Lazy Docker Global Commands - START"
+    local marker_end="# Lazy Docker Global Commands - END"
     local removed_any=false
     
     for config in "${configs[@]}"; do
@@ -205,9 +205,9 @@ remove_path_modifications() {
             # Create backup
             cp "$config" "${config}.backup.$(date +%Y%m%d-%H%M%S)"
             
-            # Remove LazyVim Docker PATH modifications
-            if grep -q "LazyVim Docker" "$config" 2>/dev/null; then
-                sed -i.tmp '/# LazyVim Docker - Add local bin to PATH/d' "$config" 2>/dev/null || true
+            # Remove Lazy Docker PATH modifications
+            if grep -q "Lazy Docker" "$config" 2>/dev/null; then
+                sed -i.tmp '/# Lazy Docker - Add local bin to PATH/d' "$config" 2>/dev/null || true
                 sed -i.tmp '/export PATH=.*\.local\/bin.*PATH/d' "$config" 2>/dev/null || true
                 rm -f "${config}.tmp"
                 
@@ -228,7 +228,7 @@ remove_path_modifications() {
 # Confirm uninstallation
 confirm_uninstall() {
     printf "\n"
-    print_warning "This will completely remove LazyVim Docker from your system:"
+    print_warning "This will completely remove Lazy Docker from your system:"
     printf "  • Docker containers and images\n"
     printf "  • Installation directory (%s)\n" "$INSTALL_DIR"
     printf "  • Global 'lazy' command\n"
@@ -277,7 +277,7 @@ confirm_uninstall() {
 main() {
     print_header
     
-    print_info "LazyVim Docker Uninstaller"
+    print_info "Lazy Docker Uninstaller"
     printf "\n"
     
     confirm_uninstall
@@ -289,14 +289,14 @@ main() {
     remove_path_modifications
     
     printf "\n"
-    print_success "🗑️  LazyVim Docker has been completely uninstalled!"
+    print_success "🗑️  Lazy Docker has been completely uninstalled!"
     printf "\n"
     print_info "What was removed:"
     print_info "  ✓ Docker containers and images"
     print_info "  ✓ Installation directory"
     print_info "  ✓ Global commands"
     printf "\n"
-    print_info "Thank you for using LazyVim Docker! 🚀"
+    print_info "Thank you for using Lazy Docker! 🚀"
     printf "\n"
     print_info "To reinstall later, run:"
     printf "  ${GREEN}curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash${NC}\n"

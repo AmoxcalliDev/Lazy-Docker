@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# LazyVim Docker - Enhanced Configuration Script v2.0
+# Lazy Docker - Enhanced Configuration Script v2.0
 # Features:
 # - Prevents duplicate directory mounts
 # - Allows easy unmounting of directories from menu
@@ -46,7 +46,7 @@ log_step() {
 
 print_header() {
     printf "${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}\n"
-    printf "${CYAN}║           LazyVim Docker - Smart Configuration Tool         ║${NC}\n"
+    printf "${CYAN}║           Lazy Docker - Smart Configuration Tool         ║${NC}\n"
     printf "${CYAN}║       Improved Directory & Timezone Manager v2.0           ║${NC}\n"
     printf "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}\n"
     printf "\n"
@@ -65,7 +65,7 @@ load_config() {
 # Save user preferences
 save_config() {
     cat > "$CONFIG_FILE" << EOF
-# LazyVim Docker Configuration - Auto-generated
+# Lazy Docker Configuration - Auto-generated
 # Last updated: $(date)
 DOCUMENTS_DECISION="${DOCUMENTS_DECISION:-}"
 PROJECTS_DECISION="${PROJECTS_DECISION:-}"
@@ -648,7 +648,7 @@ main() {
     # Load previous configuration
     load_config
     
-    log_step "Starting LazyVim Docker configuration..."
+    log_step "Starting Lazy Docker configuration..."
     printf "\n"
     
     # Configure timezone

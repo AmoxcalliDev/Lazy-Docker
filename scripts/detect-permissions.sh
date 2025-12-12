@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# LazyVim Docker - User Permissions Detection
+# Lazy Docker - User Permissions Detection
 # This script detects the appropriate UID/GID for the current system
 # to ensure proper file permissions inside the Docker container
 
