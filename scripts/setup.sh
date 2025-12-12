@@ -191,7 +191,7 @@ main() {
     
     # Check if we're in the right directory
     if [[ ! -f "docker-compose.yml" ]]; then
-        log_error "This script must be run from the lazyvim-docker directory"
+        log_error "This script must be run from the lazy-docker directory"
         exit 1
     fi
     

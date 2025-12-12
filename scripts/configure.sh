@@ -21,7 +21,7 @@ GRAY='\033[0;37m'
 NC='\033[0m'
 
 # Configuration file to store user preferences
-CONFIG_FILE=".lazyvim-docker-config"
+CONFIG_FILE=".lazy-docker-config"
 
 # Functions
 log_info() {

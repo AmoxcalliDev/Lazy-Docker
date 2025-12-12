@@ -11,7 +11,7 @@ Install directly without cloning the repository - automatic setup with smart def
 
 ```bash
 # One-line installation with automatic configuration
-curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scripts/start.sh | bash
+curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash
 
 # Then use from anywhere
 lazy enter      # Enter LazyVim development environment
@@ -21,13 +21,13 @@ lazy configure  # Customize your setup (optional)
 ### 📦 Traditional Installation
 If you prefer to clone the repository manually:
 ```bash
-git clone https://github.com/manghidev/lazyvim-docker.git && cd lazyvim-docker && make quick
+git clone https://github.com/manghidev/lazy-docker.git && cd lazy-docker && make quick
 ```
 
 ### 🔧 Manual Installation
 ```bash
-git clone https://github.com/manghidev/lazyvim-docker.git
-cd lazyvim-docker
+git clone https://github.com/manghidev/lazy-docker.git
+cd lazy-docker
 make build    # Build the environment
 make enter    # Enter the container
 ```
@@ -40,7 +40,7 @@ Complete removal when you no longer need LazyVim Docker:
 lazy uninstall
 
 # Or run directly 
-curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scripts/uninstall.sh | bash
+curl -fsSL https://lazy-docker.amoxcalli.dev/uninstall | bash
 ```
 
 **Removes everything**: Docker containers, installation files, global commands, and shell configurations in one step.
@@ -100,12 +100,12 @@ LazyVim Docker provides three main remote scripts for easy management:
 
 ```bash
 # Full installation with automatic configuration
-curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scripts/start.sh | bash
+curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash
 ```
 
 **What it does:**
 - ✅ Checks system requirements (Docker, git, curl)
-- ✅ Downloads LazyVim Docker to `~/.local/share/lazyvim-docker`
+- ✅ Downloads LazyVim Docker to `~/.local/share/lazy-docker`
 - ✅ Creates global `lazy` command in `~/.local/bin`
 - ✅ Adds `~/.local/bin` to your PATH automatically
 - ✅ Builds Docker environment (may take a few minutes)
@@ -139,12 +139,12 @@ make update
 lazy uninstall
 
 # Or run directly with prompts
-curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scripts/uninstall.sh | bash
+curl -fsSL https://lazy-docker.amoxcalli.dev/uninstall | bash
 ```
 
 **What it does when you confirm:**
 - ✅ Stops and removes all Docker containers and images
-- ✅ Removes installation directory (`~/.local/share/lazyvim-docker`) 
+- ✅ Removes installation directory (`~/.local/share/lazy-docker`) 
 - ✅ Removes global `lazy` command
 - ✅ Removes shell configuration entries (`.zshrc`, `.bashrc`, etc.)
 - ✅ Removes PATH modifications automatically
@@ -171,7 +171,7 @@ curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scrip
 - Supported OS: macOS, Linux
 
 **Installation Process:**
-1. Creates `~/.local/share/lazyvim-docker` directory
+1. Creates `~/.local/share/lazy-docker` directory
 2. Downloads latest repository to temp location
 3. Moves files to installation directory
 4. Creates global `lazy` command in `~/.local/bin`
@@ -182,7 +182,7 @@ curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scrip
 **Files Modified:**
 - `~/.zshrc` or `~/.bashrc` (adds PATH)
 - Creates `~/.local/bin/lazy`
-- Creates `~/.local/share/lazyvim-docker/`
+- Creates `~/.local/share/lazy-docker/`
 
 ### 🔄 Smart Update System
 **Purpose**: Update existing installation to latest version with intelligent version checking
@@ -204,7 +204,7 @@ curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scrip
 - Docker volumes (development data)
 
 **Safe Rollback:**
-- Backup created before update in `~/.local/share/lazyvim-docker-backup-[timestamp]`
+- Backup created before update in `~/.local/share/lazy-docker-backup-[timestamp]`
 
 ### 🗑️ Smart Uninstaller
 **Purpose**: Complete and safe removal of LazyVim Docker installation
@@ -214,7 +214,7 @@ curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scrip
 2. **Single confirmation prompt** - no additional questions
 3. Stops all running containers
 4. Removes Docker containers, images, and volumes
-5. Removes installation directory (`~/.local/share/lazyvim-docker`)
+5. Removes installation directory (`~/.local/share/lazy-docker`)
 6. Removes global `lazy` command and shell integrations
 7. Removes PATH modifications automatically
 8. Creates timestamped backups before any changes
@@ -243,14 +243,14 @@ curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scrip
 **From Traditional to Remote:**
 ```bash
 # From your existing repo directory
-make destroy && cd .. && rm -rf lazyvim-docker
-curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scripts/start.sh | bash
+make destroy && cd .. && rm -rf lazy-docker
+curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash
 ```
 
 **From Remote to Traditional:**
 ```bash
 lazy uninstall
-git clone https://github.com/manghidev/lazyvim-docker.git && cd lazyvim-docker && make quick
+git clone https://github.com/manghidev/lazy-docker.git && cd lazy-docker && make quick
 ```
 
 ---
@@ -260,7 +260,7 @@ git clone https://github.com/manghidev/lazyvim-docker.git && cd lazyvim-docker &
 ### Remote Installation Workflow (Recommended)
 ```bash
 # 1. Install once (5-10 minutes) - automatic setup
-curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scripts/start.sh | bash
+curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash
 
 # 2. Daily usage from anywhere
 cd ~/Projects/my-project
@@ -276,10 +276,10 @@ lazy update      # Update weekly/monthly
 ### Traditional Installation Workflow
 ```bash
 # 1. Install once
-git clone https://github.com/manghidev/lazyvim-docker.git && cd lazyvim-docker && make quick
+git clone https://github.com/manghidev/lazy-docker.git && cd lazy-docker && make quick
 
 # 2. Daily usage (must be in project directory)
-cd path/to/lazyvim-docker
+cd path/to/lazy-docker
 make enter          # Start coding
 
 # 3. Management
@@ -388,7 +388,7 @@ lazy build
 lazy update
 
 # Nuclear option - complete reinstall
-lazy uninstall && curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim-docker/main/scripts/start.sh | bash
+lazy uninstall && curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash
 ```
 
 ---
@@ -400,9 +400,9 @@ lazy uninstall && curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim
 - **[🔁 Container Lifecycle Guide](docs/CONTAINER_LIFECYCLE.md)** - Detailed workflows
 
 **Support:**
-- 🐛 [Report Issues](https://github.com/manghidev/lazyvim-docker/issues)
-- 💡 [Feature Requests](https://github.com/manghidev/lazyvim-docker/issues)
-- ⭐ [Star the Project](https://github.com/manghidev/lazyvim-docker)
+- 🐛 [Report Issues](https://github.com/manghidev/lazy-docker/issues)
+- 💡 [Feature Requests](https://github.com/manghidev/lazy-docker/issues)
+- ⭐ [Star the Project](https://github.com/manghidev/lazy-docker)
 
 ---
 
@@ -410,7 +410,7 @@ lazy uninstall && curl -fsSL https://raw.githubusercontent.com/manghidev/lazyvim
 
 **Created by ManghiDev**  
 🌐 [Personal Website](https://manghi.dev)  
-📧 [GitHub Issues](https://github.com/manghidev/lazyvim-docker/issues)
+📧 [GitHub Issues](https://github.com/manghidev/lazy-docker/issues)
 
 **License:** GPLv3 - See [LICENSE](LICENSE) file
 
