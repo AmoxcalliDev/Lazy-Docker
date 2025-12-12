@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# LazyVim Docker Health Check Script
-# This script checks the health of the LazyVim Docker environment
+# Lazy Docker Health Check Script
+# This script checks the health of the Lazy Docker environment
 
 set -e
 
@@ -33,7 +33,7 @@ log_error() {
 }
 
 print_header() {
-    printf "${BLUE}=== LazyVim Docker Health Check ===${NC}\n"
+    printf "${BLUE}=== Lazy Docker Health Check ===${NC}\n"
     printf "\n"
 }
 

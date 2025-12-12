@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# LazyVim Docker - Simple Remote Installation Script
+# Lazy Docker - Simple Remote Installation Script
 # This version uses smart defaults and skips interactive configuration
 # Perfect for automated installations or when interactive input fails
 
@@ -26,7 +26,7 @@ BRANCH="${LAZYVIM_BRANCH:-main}"
 # Print functions
 print_header() {
     printf "${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}\n"
-    printf "${CYAN}║             LazyVim Docker - Simple Installer               ║${NC}\n"
+    printf "${CYAN}║                Lazy Docker - Simple Installer                 ║${NC}\n"
     printf "${CYAN}║                 Smart Defaults, Zero Input                  ║${NC}\n"
     printf "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}\n"
     printf "\n"
@@ -116,7 +116,7 @@ create_directories() {
 
 # Download repository
 download_repository() {
-    print_step "Downloading LazyVim Docker repository..."
+    print_step "Downloading Lazy Docker repository..."
     
     cd "$TEMP_DIR"
     
@@ -131,7 +131,7 @@ download_repository() {
 
 # Install application
 install_application() {
-    print_step "Installing LazyVim Docker..."
+    print_step "Installing Lazy Docker..."
     
     if [ -d "$INSTALL_DIR" ]; then
         print_info "Removing existing installation..."
@@ -154,7 +154,7 @@ setup_local_bin_path() {
     # Add to PATH if not already there
     if ! grep -q "$HOME/.local/bin" "$shell_config" 2>/dev/null; then
         printf "\n" >> "$shell_config"
-        printf "# LazyVim Docker - Add local bin to PATH\n" >> "$shell_config"
+        printf "# Lazy Docker - Add local bin to PATH\n" >> "$shell_config"
         printf "%s\n" "$path_line" >> "$shell_config"
         print_info "Added $HOME/.local/bin to PATH in $shell_config"
     fi
@@ -279,7 +279,7 @@ cleanup() {
 main() {
     print_header
     
-    print_info "Starting LazyVim Docker simple installation..."
+    print_info "Starting Lazy Docker simple installation..."
     print_info "Installation directory: $INSTALL_DIR"
     print_info "Binary directory: $BIN_DIR"
     print_info "Using smart defaults (no interactive input required)"
@@ -295,7 +295,7 @@ main() {
     cleanup
     
     printf "\n"
-    print_success "🎉 LazyVim Docker installed successfully!"
+    print_success "🎉 Lazy Docker installed successfully!"
     printf "\n"
     print_info "Configuration applied:"
     printf "  • Timezone: Auto-detected from system\n"

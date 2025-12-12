@@ -1,6 +1,6 @@
 # LazyVim Container Lifecycle Management
 
-This guide explains the correct workflow for managing the LazyVim Docker container without losing plugin configurations, sessions, or having to rebuild unnecessarily.
+This guide explains the correct workflow for managing the Lazy Docker container without losing plugin configurations, sessions, or having to rebuild unnecessarily.
 
 ## 🔧 Main Commands
 

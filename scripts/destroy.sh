@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# LazyVim Docker Destroy Script
-# This script completely removes the LazyVim Docker environment
+# Lazy Docker Destroy Script
+# This script completely removes the Lazy Docker environment
 #
 # RECOMMENDATION: Use 'make destroy' instead of running this script directly
 # The make command provides better error handling and user feedback
@@ -36,7 +36,7 @@ log_error() {
 }
 
 # Confirmation prompt
-log_warning "This will completely destroy the LazyVim Docker environment!"
+log_warning "This will completely destroy the Lazy Docker environment!"
 log_warning "This includes:"
 printf "  - Stopping and removing containers\n"
 printf "  - Removing Docker images\n"
@@ -75,5 +75,5 @@ else
     log_success "All containers removed"
 fi
 
-log_success "LazyVim Docker environment has been completely destroyed"
+log_success "Lazy Docker environment has been completely destroyed"
 log_info "To rebuild the environment, run 'make build'"

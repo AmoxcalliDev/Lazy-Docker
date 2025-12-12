@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# LazyVim Docker Setup Script
+# Lazy Docker Setup Script
 # This script helps with initial setup and configuration
 
 set -e
@@ -30,8 +30,8 @@ log_error() {
 }
 
 print_header() {
-    printf "${BLUE}=== LazyVim Docker Setup ===${NC}\n"
-    printf "This script will help you set up your LazyVim Docker environment\n"
+    printf "${BLUE}=== Lazy Docker Setup ===${NC}\n"
+    printf "This script will help you set up your Lazy Docker environment\n"
     printf "\n"
 }
 
@@ -46,7 +46,7 @@ create_dotfiles_structure() {
     # Create basic .zshrc if it doesn't exist
     if [[ ! -f ".dotfiles/.zshrc" ]]; then
         cat > .dotfiles/.zshrc << 'EOF'
-# LazyVim Docker Zsh Configuration
+# Lazy Docker Zsh Configuration
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"

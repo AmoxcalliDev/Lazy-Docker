@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# LazyVim Docker - Smart Update Script
+# Lazy Docker - Smart Update Script
 # Interactive update with version checking and user prompts
 
 set -e
@@ -23,7 +23,7 @@ BACKUP_DIR="./backups"
 # Print functions
 print_header() {
     printf "\n${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}\n"
-    printf "${CYAN}║           LazyVim Docker - Smart Updater                    ║${NC}\n"
+    printf "${CYAN}║           Lazy Docker - Smart Updater                    ║${NC}\n"
     printf "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}\n"
     printf "\n"
 }
@@ -83,7 +83,7 @@ ask_yes_no() {
 # Check if we're in a git repository
 check_git_repo() {
     if [ ! -d ".git" ]; then
-        print_error "You are not in a LazyVim Docker git repository"
+        print_error "You are not in a Lazy Docker git repository"
         print_info "This script must be run from the project directory"
         exit 1
     fi
@@ -370,7 +370,7 @@ main() {
     fi
     
     printf "\n"
-    print_success "🎉 LazyVim Docker updated successfully!"
+    print_success "🎉 Lazy Docker updated successfully!"
     
     local new_version=$(get_current_version)
     printf "\n"
