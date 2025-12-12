@@ -326,12 +326,13 @@ main() {
     printf "  ${GREEN}curl -fsSL https://lazy-docker.amoxcalli.dev/install | bash${NC}\n"
     printf "\n"
     
-    # Auto-reload shell to complete cleanup
-    print_info "🔄 Reloading shell automatically in 2 seconds..."
-    sleep 2
-    
-    # Execute shell restart
-    exec $SHELL
+    # Final instruction to user
+    print_warning "🔥 TO COMPLETE: Run this command NOW to remove 'lazy' from memory:"
+    printf "\n"
+    printf "    ${GREEN}${BOLD}exec \$SHELL${NC}\n"
+    printf "\n"
+    printf "    or simply:  ${GREEN}${BOLD}exec zsh${NC}\n"
+    printf "\n"
 }
 
 # Run main function
